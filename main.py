@@ -12,7 +12,9 @@ parser.read("configfile.ini")
 client = docker.from_env()
 container = client.containers.get(f'{parser.get("general", "container_name")}')
 
-database_name = parser.get('general', 'database_name')
+# database_name = parser.get('general', 'database_name')
+# test_database_name = parser.get('general', 'test_database_name')
+databases = parser['databases_names']
 
 def validate_container():
     # check if container exists
@@ -32,7 +34,7 @@ def validate_backup_file():
         print(Fore.RED + 'No se encontró el archivo de backup, asegurese de haberlo generado')
         exit()
 
-def restore_database():
+def restore_database(database_name):
     # create .cnf file for mysql with the user and password to connect to the database, check: https://stackoverflow.com/questions/62287061/connect-to-2-instances-of-mysql-with-no-password-interaction-using-command-line
     mysql_command = f"drop database if exists {database_name}; create database {database_name}; use {database_name}; source backup.sql;"
     result = container.exec_run(f'mysql -e"{mysql_command}"', workdir='/home/database_backup/', user='root', stdin=False)
@@ -48,9 +50,12 @@ def main():
     validate_container_status()
     validate_backup_file()
 
-    print(Fore.WHITE + 'Backup encontrado, restaurando...')
+    print(Fore.WHITE + 'Backup encontrado')
 
-    restore_database()
+    print('Databases:')
+    for key in databases:
+        print(f'Restaurando Base de datos: {databases[key]}')
+        restore_database(databases[key])
 
     et = time.time()
     elapsed_time = et - st
