@@ -12,8 +12,6 @@ parser.read("configfile.ini")
 client = docker.from_env()
 container = client.containers.get(f'{parser.get("general", "container_name")}')
 
-# database_name = parser.get('general', 'database_name')
-# test_database_name = parser.get('general', 'test_database_name')
 databases = parser['databases_names']
 
 def validate_container():
