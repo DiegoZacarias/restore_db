@@ -57,7 +57,6 @@ def main():
 
     et = time.time()
     elapsed_time = et - st
-    # Aprox 1000 segundos, 16 minutos en pruebas para db de talently
     print(Fore.YELLOW + 'Execution time:', elapsed_time, 'seconds')
     print(Fore.GREEN + 'Restauración completada')
 
