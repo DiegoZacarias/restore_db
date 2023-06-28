@@ -1,7 +1,7 @@
 ## Instalación del script
 
 1. Clona el proyecto de GitHub en tu ordenador usando el comando `git clone`:
-git clone https://github.com/usuario/proyecto.git
+git clone https://github.com/DiegoZacarias/restore_db
 
 2. Dirígete a la carpeta donde se encuentra el script usando el comando `cd`:
 cd proyecto
