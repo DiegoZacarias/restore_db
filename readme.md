@@ -31,7 +31,7 @@ El archivo de configuración se divide en dos secciones: `[general]` y `[databas
 
 **Nota:** Se puede agregar tantas bases de datos como desee.
 
-5. Ejecuta el script y espera unos minutos a que termine el proceso
+5. Ejecuta el script 'main.py' y espera unos minutos a que termine el proceso
 
 ## Compatibilidad y Pruebas
 
